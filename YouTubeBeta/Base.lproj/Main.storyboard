@@ -18,10 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DR6-YG-XTi">
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DR6-YG-XTi">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sss-Qc-3Og">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sss-Qc-3Og">
                                     <size key="itemSize" width="410" height="816"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -29,7 +29,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="DlP-rT-1C4">
-                                        <rect key="frame" x="2" y="0.0" width="410" height="816"/>
+                                        <rect key="frame" x="0.0" y="1" width="410" height="816"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="410" height="816"/>
@@ -104,9 +104,9 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="CsS-gk-3So" firstAttribute="trailing" secondItem="bxJ-y5-CP6" secondAttribute="trailing" id="OGT-AZ-Oww"/>
+                        <constraint firstItem="CsS-gk-3So" firstAttribute="trailing" secondItem="B5l-id-VGH" secondAttribute="trailing" id="OGT-AZ-Oww"/>
                         <constraint firstItem="QiB-tt-tek" firstAttribute="leading" secondItem="B5l-id-VGH" secondAttribute="leading" id="Qkt-1W-j4R"/>
-                        <constraint firstItem="CsS-gk-3So" firstAttribute="leading" secondItem="bxJ-y5-CP6" secondAttribute="leading" id="TRv-KI-8C1"/>
+                        <constraint firstItem="CsS-gk-3So" firstAttribute="leading" secondItem="B5l-id-VGH" secondAttribute="leading" id="TRv-KI-8C1"/>
                         <constraint firstItem="QiB-tt-tek" firstAttribute="width" secondItem="B5l-id-VGH" secondAttribute="width" multiplier="0.25" id="Wi9-C0-x9E"/>
                         <constraint firstAttribute="bottom" secondItem="QiB-tt-tek" secondAttribute="bottom" id="bc4-0b-am4"/>
                         <constraint firstItem="CsS-gk-3So" firstAttribute="top" secondItem="B5l-id-VGH" secondAttribute="top" id="dnY-8L-jdL"/>

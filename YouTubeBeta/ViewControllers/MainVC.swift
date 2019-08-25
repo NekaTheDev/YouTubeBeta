@@ -18,12 +18,15 @@ class MainVC: UIViewController {
     //MARK: Methods
     func customization() {
         self.view.backgroundColor = UIColor.rgb(r: 228, g: 34, b: 24)
+        
         // CollectionView Setup
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         self.collectionView.backgroundColor = UIColor(white: 0, alpha: 0.3)
-        self.collectionView.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
+        
+        //self.collectionView.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
         self.collectionView.frame = CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.view.bounds.height)
+        
         //TableView Setup
         self.view.addSubview(self.tabBarView)
         self.tabBarView.translatesAutoresizingMaskIntoConstraints = false
@@ -32,6 +35,7 @@ class MainVC: UIViewController {
         let _ = NSLayoutConstraint.init(item: v, attribute: .left, relatedBy: .equal, toItem: self.tabBarView, attribute: .left, multiplier: 1.0, constant: 0).isActive = true
         let _ = NSLayoutConstraint.init(item: v, attribute: .right, relatedBy: .equal, toItem: self.tabBarView, attribute: .right, multiplier: 1.0, constant: 0).isActive = true
         self.tabBarView.heightAnchor.constraint(equalToConstant: 64).isActive = true
+        
         //ViewController Init
         let viewControllers = [UIViewController(), UIViewController(), UIViewController(), UIViewController()]
         for vc in viewControllers {
@@ -41,6 +45,21 @@ class MainVC: UIViewController {
             self.views.append(vc.view)
         }
         self.collectionView.reloadData()
+        
+        //NotificationCenter Setup
+        NotificationCenter.default.addObserver(self, selector: #selector(self.scrollViews(notification:)), name: .init(rawValue: "didSelectMenu"), object: nil)
+    }
+    
+    @objc func scrollViews(notification: Notification) {
+        if let info = notification.userInfo {
+            let userInfo = info as! [String: Int]
+            self.collectionView.scrollToItem(at: IndexPath.init(row: userInfo["index"]!, section: 0), at: .centeredHorizontally, animated: true)
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let scrollIndex = scrollView.contentOffset.x / self.view.bounds.width
+        NotificationCenter.default.post(name: .init(rawValue: "scrollMenu"), object: nil, userInfo: ["length": scrollIndex])
     }
 
     override func viewDidLoad() {
@@ -51,6 +70,10 @@ class MainVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
 }
